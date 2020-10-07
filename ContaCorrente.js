@@ -1,8 +1,15 @@
 import {Cliente} from "./Cliente.js";
 
 export class ContaCorrente{
+    static numeroDeContas = 0;
     agencia;
+
     _cliente;
+
+    _saldo = 0;
+/* # serve para deixar a variável privada assim ela não pode ser alterada diretamente.
+    No exemplo acima vc pode add valor usando o método 'depositar', mas não usando contaCorrente.saldo = tal valor
+    # ainda não é oficial então usa-se _ para mostrar que é privada */
 
     set cliente(novoValor){
         if(novoValor instanceof Cliente){
@@ -14,13 +21,13 @@ export class ContaCorrente{
         return this._cliente;
     }
 
-    _saldo = 0;
-/* # serve para deixar a variável privada assim ela não pode ser alterada diretamente.
-    No exemplo acima vc pode add valor usando o método 'depositar', mas não usando contaCorrente.saldo = tal valor
-    # ainda não é oficial então usa-se _ para mostrar que é privada */
-
     get saldo(){
         this._saldo;
+    }
+    constructor(agencia, cliente){
+        this.agencia = agencia;
+        this.cliente = cliente;
+        ContaCorrente.numeroDeContas+=1;
     }
 
     sacar(valor){
@@ -31,7 +38,7 @@ export class ContaCorrente{
     }
     depositar(valor){
         if(valor <= 0){
-            return
+            return;
         }
         this._saldo += valor;
     }
