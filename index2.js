@@ -15,5 +15,4 @@ const gerenteEstaLogado =  SistemaAutenticacao.login(gerente, "123");
 
 const clienteEstaLogado = SistemaAutenticacao.login(cliente, "456")
 
-console.log(diretorEstaLogado, gerenteEstaLogado);
-console.log(clienteEstaLogado);
+console.log(diretorEstaLogado, gerenteEstaLogado, clienteEstaLogado);
